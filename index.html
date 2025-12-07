@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Crop Advisor - Farmer Helper</title>
+    <!-- FIX 1: Correct CSS path -->
+    <link rel="stylesheet" href="/src/styles/Levell.css">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                <h1>Smart Crop Advisor</h1>
+            </div>
+            <p class="tagline">AI-powered crop recommendations for Indian farmers</p>
+        </header>
+
+        <!-- Main Form -->
+        <main class="main-content">
+            <div class="form-card">
+                <h2><i class="fas fa-tractor"></i> Get Crop Recommendation</h2>
+                <p class="subtitle">Enter your details below for personalized advice</p>
+                
+                <form id="cropForm">
+                    <!-- State Selection -->
+                    <div class="form-group">
+                        <label for="state"><i class="fas fa-map-marker-alt"></i> Select State</label>
+                        <select id="state" required>
+                            <option value="">-- Choose State --</option>
+                            <!-- JavaScript will populate states -->
+                        </select>
+                    </div>
+
+                    <!-- City Selection -->
+                    <!-- FIX 2: Add disabled attribute initially -->
+                    <div class="form-group">
+                        <label for="city"><i class="fas fa-city"></i> Select City/District</label>
+                        <select id="city" required disabled>
+                            <option value="">-- First select State --</option>
+                            <option value="">---</option>
+                        </select>
+                    </div>
+
+                    <!-- Land Size -->
+                    <div class="form-group">
+                        <label for="landSize"><i class="fas fa-ruler-combined"></i> Land Size</label>
+                        <div class="land-input">
+                            <input type="number" id="landSize" placeholder="Enter land size" required min="0.1" step="0.1">
+                            <select id="landUnit">
+                                <option value="acres">Acres</option>
+                                <option value="hectares">Hectares</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Season -->
+                    <div class="form-group">
+                        <label for="season"><i class="fas fa-cloud-sun"></i> Current Season</label>
+                        <select id="season" required>
+                            <option value="">-- Select Season --</option>
+                            <option value="Kharif">Kharif (Jun - Oct)</option>
+                            <option value="Rabi">Rabi (Nov - Apr)</option>
+                            <option value="Zaid">Zaid (Mar - Jun)</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitBtn" class="submit-btn">
+                        <i class="fas fa-search"></i> Get Crop Recommendation
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="results-card hidden">
+                <h2><i class="fas fa-chart-line"></i> Recommendation Results</h2>
+                
+                <!-- Loading -->
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing your farm details with AI...</p>
+                </div>
+
+                <!-- Results Content -->
+                <div id="resultContent">
+                    <!-- Results will be inserted here by JavaScript -->
+                </div>
+
+                <button id="backBtn" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Form
+                </button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Powered by Cohere AI • Data sourced from ICAR & IMD</p>
+            <p class="disclaimer">Note: This is a demo. Consult local agricultural officers for final decisions.</p>
+        </footer>
+    </div>
+
+    <!-- FIX 3: Ensure script.js is loaded -->
+  <script src="/src/scripts/levell.js"></script>
+</body>
+</html>
